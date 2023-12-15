@@ -6,13 +6,13 @@ import Image from "next/image";
 export default function ArtPieces() {
   const { data, error } = useSWR("https://example-apis.vercel.app/api/art");
 
-  function ArtPiecePreview({ slug, image, title, artist }) {
+  function ArtPiecePreview({ name, slug, imageSource, artist }) {
     return (
       <div>
         <Link href={`/art-pieces/${slug}`}>
           <ul>
-            <Image src={image} alt={title} />
-            <li>{title}</li>
+            <Image src={imageSource} alt={name} width={400} height={300} />
+            <li>{name}</li>
             <li>{artist}</li>
           </ul>
         </Link>
@@ -30,8 +30,8 @@ export default function ArtPieces() {
         <ArtPiecePreview
           key={piece.slug}
           slug={piece.slug}
-          image={piece.image}
-          title={piece.title}
+          imageSource={piece.imageSource}
+          name={piece.name}
           artist={piece.artist}
         />
       ))}
