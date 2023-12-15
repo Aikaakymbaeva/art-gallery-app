@@ -1,17 +1,40 @@
 import useSWR from "swr";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+export default function ArtPieces() {
+  const { data, error } = useSWR("https://example-apis.vercel.app/api/art");
 
-function ArtPieces() {
-  const { data } = useSWR("https://example-apis.vercel.app/api/art", fetcher);
-}
+  function ArtPiecePreview({ slug, image, title, artist }) {
+    return (
+      <div>
+        <Link href={`/art-pieces/${slug}`}>
+          <ul>
+            <Image src={image} alt={title} />
+            <li>{title}</li>
+            <li>{artist}</li>
+          </ul>
+        </Link>
+      </div>
+    );
+  }
 
-return {};
+  const pieces = data;
+  if (error) return <div>Error loading data</div>;
+  if (!data) return <div>Loading...</div>;
 
-export default function HomePage() {
   return (
     <div>
-      <h1>Hello from Next.js</h1>
+      {pieces.map((piece) => (
+        <ArtPiecePreview
+          key={piece.slug}
+          slug={piece.slug}
+          image={piece.image}
+          title={piece.title}
+          artist={piece.artist}
+        />
+      ))}
     </div>
   );
 }
