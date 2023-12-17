@@ -1,5 +1,5 @@
 import React from 'react';
-import Spotlight from './spotlight';
+import Spotlight from './Spotlight';
 import Link from 'next/link';
 import Image from "next/image";
 
