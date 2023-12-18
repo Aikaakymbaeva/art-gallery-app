@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Children } from "react";
 import Spotlight from "./Spotlight";
 import useSWR from "swr";
 import ArtPiecePreview from "./ArtPiecePreview";
+import Navigation from "./Navigation";
 
 export default function ArtPieces({ pieces }) {
   const getRandomPiece = () => {

@@ -3,6 +3,10 @@ import Image from "next/image";
 import ArtPieces from "./ArtPieces";
 
 function ArtPiecePreview({ name, slug, imageSource, artist }) {
+  const { data, error } = useSWR("https://example-apis.vercel.app/api/art");
+  const pieces = data;
+  if (error) return <div>Error loading data</div>;
+  if (!data) return <div>Loading...</div>;
   return (
     <div>
       <Link href={`/art-pieces/${slug}`}>
