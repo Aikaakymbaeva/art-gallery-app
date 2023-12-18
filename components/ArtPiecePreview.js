@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ArtPieces from "./ArtPieces";
+import useSWR from "swr";
 
 function ArtPiecePreview({ name, slug, imageSource, artist }) {
   const { data, error } = useSWR("https://example-apis.vercel.app/api/art");

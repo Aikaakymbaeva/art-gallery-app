@@ -6,7 +6,7 @@ const Navigation = () => {
     <nav>
       <ul>
         <li>
-          <a href="/ArtPieces/">Art Pieces</a>
+          <a href="/art-pieces/">Art Pieces</a>
         </li>
         <li>
           <Link href="components/Spotlight.js">Spotlight</Link>

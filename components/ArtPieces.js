@@ -7,19 +7,15 @@ import ArtPiecePreview from "./ArtPiecePreview";
 import Navigation from "./Navigation";
 
 export default function ArtPieces({ pieces }) {
-  const getRandomPiece = () => {
+  /*  const getRandomPiece = () => {
     const random = Math.floor(Math.random() * pieces.length);
     return pieces[random];
   };
 
-  const randomArtPiece = getRandomPiece();
+  const randomArtPiece = getRandomPiece(); */
 
   return (
     <div>
-      <Spotlight
-        image={randomArtPiece.imageSource}
-        artist={randomArtPiece.artist}
-      />
       {pieces.map((piece) => (
         <ArtPiecePreview
           key={piece.slug}
