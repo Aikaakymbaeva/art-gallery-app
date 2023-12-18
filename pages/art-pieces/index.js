@@ -1,9 +1,6 @@
 import ArtPieces from "@/components/ArtPieces";
 
-
-export default function artPiecesIndex({pieces}) {
-    console.log(pieces)
-    return (
-        <ArtPieces pieces={pieces} />
-    )
+export default function ArtPiecesOverview({ pieces }) {
+  console.log(pieces);
+  return <ArtPieces pieces={pieces} />;
 }
