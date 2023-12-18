@@ -1,16 +1,25 @@
+import React from "react";
 import useSWR from "swr";
-import ArtPieces from "./components/ArtPieces";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
+import ArtPieces from "@/components/ArtPieces";
+import Spotlight from "@/components/Spotlight";
 
-export default function index (){
+export default function SpotlightPage({pieces, error}) {
+  if (error) return <div>Error loading data</div>;
+  if (!pieces) return <div>Loading...</div>;
 
+  const getRandomPiece = () => {
+    const random = Math.floor(Math.random() * pieces.length);
+    return pieces[random];
+  };
 
-  const { data, error } = useSWR("https://example-apis.vercel.app/api/art");
-  const pieces = data;                                          //NEU ist nun hier
-    if (error) return <div>Error loading data</div>;
-    if (!data) return <div>Loading...</div>;
- return (
-  <div>
-   <ArtPieces pieces={pieces} ></ArtPieces>                  {/*NEU hier wird nun pieces an ArtPieces übergeben*/}
-  </div>
- )
+  const randomArtPiece = getRandomPiece();
+
+  return (
+    <div>
+        <Spotlight image={randomArtPiece.imageSource} artist={randomArtPiece.artist} />  {/* Nur Spotlight soll auf index gerendert werden  */}
+    </div>
+  );
 }

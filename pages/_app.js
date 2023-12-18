@@ -1,34 +1,18 @@
-/*import GlobalStyle from "../styles";                                      vorher
-import { SWRConfig } from "swr";
-
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-export default function App({ Component, pageProps }) {
-  return (
-    <SWRConfig
-      value={{
-        fetcher,
-        refreshInterval: 5000,
-      }}
-    >
-      <GlobalStyle />
-      <Component {...pageProps} />
-    </SWRConfig>
-  );
-} */
-
-
+import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
-import Layout from '../components/Layout';
+import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
+export default function App({ Component, pageProps }) {
+  const { data, error } = useSWR("https://example-apis.vercel.app/api/art", fetcher); // fetcher direkt mit useSWR angeben, da <SWRConfig> erst danach definiert wird
+  const pieces = data;
 
-const MyApp = ({ Component, pageProps }) => {
+  pageProps = { ...pageProps, pieces, error }; // Page props um pieces und error erweitern, damit es für alle Komponenten verfügbar ist.
+
   return (
     <SWRConfig
       value={{
-        fetcher,
         refreshInterval: 5000,
       }}
     >
@@ -39,5 +23,3 @@ const MyApp = ({ Component, pageProps }) => {
     </SWRConfig>
   );
 }
-
-export default MyApp;
