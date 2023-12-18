@@ -4,11 +4,7 @@ import Navigation from "./Navigation";
 import Spotlight from "./Spotlight";
 import ArtPiecePreview from "./ArtPiecePreview";
 
-/* function Layout() {
-  return <Navigation />;
-}
-export default Layout; */
-function Layout({ children }) {
+export default function Layout({ children }) {
   return (
     <div>
       <Navigation />
@@ -16,5 +12,3 @@ function Layout({ children }) {
     </div>
   );
 }
-
-export default Layout;

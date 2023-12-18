@@ -9,7 +9,7 @@ const Navigation = () => {
           <a href="/art-pieces/">Art Pieces</a>
         </li>
         <li>
-          <Link href="components/Spotlight.js">Spotlight</Link>
+          <a href="/">Spotlight</a>
         </li>
       </ul>
     </nav>

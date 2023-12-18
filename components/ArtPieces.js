@@ -7,16 +7,9 @@ import ArtPiecePreview from "./ArtPiecePreview";
 import Navigation from "./Navigation";
 
 export default function ArtPieces({ pieces }) {
-  /*  const getRandomPiece = () => {
-    const random = Math.floor(Math.random() * pieces.length);
-    return pieces[random];
-  };
-
-  const randomArtPiece = getRandomPiece(); */
-
   return (
     <div>
-      {pieces.map((piece) => (
+      {pieces?.map((piece) => ( // Fragezeichen ist wichtig, damit der Code nicht abstürzt, wenn pieces noch nicht befüllt ist (also noch nicht geladen)
         <ArtPiecePreview
           key={piece.slug}
           slug={piece.slug}
